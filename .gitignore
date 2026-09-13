@@ -1,0 +1,25 @@
+# Environment secrets
+.env
+*.env
+
+# Datasets (link, don't commit)
+/data/raw/
+/data/processed/
+*.csv
+*.zip
+
+# Model weights
+*.pt
+*.pth
+*.onnx
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
