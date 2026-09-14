@@ -34,7 +34,7 @@
 - [ ] *[Fill in: folder skeleton confirmed]*
 - [ ] *[Fill in: problem statement finalized]*
 - [ ] *[Fill in: RDD2022 summary pushed]*
-- [ ] *[Fill in: Adrija's tasks completed]*
+- [x] Adrija's tasks completed — Colab set up with T4 GPU confirmed (`!nvidia-smi`), Kaggle account created, RDD2022 repo structure reviewed (Pascal VOC XML, 4 damage classes: D00/D10/D20/D40), iWatchRoadv2 paper summary written and pushed (`docs/literature/iwatchroadv2_summary.md`), YOLOv8n sanity-check inference run successfully on sample image.
 - [ ] *[Fill in: Debopriya's tasks completed]*
 
 ## Challenges Faced
