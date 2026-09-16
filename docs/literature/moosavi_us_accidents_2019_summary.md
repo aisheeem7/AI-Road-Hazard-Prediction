@@ -1,0 +1,9 @@
+# Moosavi et al. (2019) – A Countrywide Traffic Accident Dataset
+
+Moosavi et al. developed a large-scale publicly available traffic accident database called **US-Accidents** to address the limitations of existing accident datasets. According to the paper, many previous studies relied on small-scale datasets with limited coverage, while some existing large datasets were private, outdated, or lacked important contextual information. The authors used a comprehensive process of **data collection, integration, and augmentation** to create the US-Accidents dataset, which contained approximately **2.25 million traffic accident instances** from the contiguous United States over a three-year period.
+
+An important aspect of the dataset is that each accident record contains both intrinsic and contextual attributes. These include **location, time, natural-language description, weather, period-of-day, and points-of-interest (POIs)**. Weather provides environmental context associated with an accident, while time and period-of-day provide temporal information. Location and POIs provide information about the geographical surroundings of an accident. By combining these different types of information, the dataset provides a richer representation of traffic accidents than a dataset containing only accident counts or locations.
+
+This methodology is relevant to our road-hazard prediction project because it demonstrates the value of combining accident information with contextual factors. Our project can similarly consider **weather, time, location, and surrounding road context** together with computer-vision-based road hazard information. The paper therefore provides a useful basis for selecting contextual features for our future risk-prediction model.
+
+Citation: Moosavi, S., Samavatian, M. H., Parthasarathy, S., & Ramnath, R. (2019). A Countrywide Traffic Accident Dataset. arXiv:1906.05409.
