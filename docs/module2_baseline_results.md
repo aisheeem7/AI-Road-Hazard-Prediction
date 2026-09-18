@@ -114,3 +114,46 @@ The leakage-reduced model produced lower Accuracy and F1 than the original basel
 This revised model reduces direct target overlap, but it is not a fully forecast-safe temporal model because the remaining MoRTH features are from 2016 while the target is based on 2014 data.
 
 The results remain preliminary because the dataset contains only 36 State/UT observations.
+
+## Day 5 — Weather-Integrated Model
+
+### Weather Integration
+
+The reusable `src/weather_api.py` pipeline was integrated into the modeling workflow.
+
+For a 10-State/UT demonstration set, current weather was retrieved for representative cities and merged with the MoRTH records.
+
+Weather features used in the model:
+
+- `temperature`
+- `humidity`
+
+The existing leakage-reduced road-condition features were retained:
+
+- `speed_breakers_number_of_accidents_2016`
+- `sharp_curve_number_of_accidents_2016`
+- `steep_gradient_number_of_accidents_2016`
+
+### Results
+
+| Model | Dataset / Setup | Accuracy | F1 Score |
+|---|---|---:|---:|
+| Day 3 original baseline | 36 State/UTs | 77.78% | 0.7500 |
+| Day 4 leakage-reduced | 36 State/UTs | 66.67% | 0.5714 |
+| Day 5 weather-integrated | 10-State demo | 66.67% | 0.6667 |
+
+The Day 5 experiment used 7 training observations and 3 testing observations with `random_state=42` and stratification.
+
+### Important Limitation
+
+The weather values retrieved by OpenWeatherMap represent current weather conditions rather than historical weather conditions for the 2014 accident records.
+
+Therefore, the Day 5 result demonstrates the technical integration of weather features into the model pipeline. It should not be interpreted as a valid historical 2014 weather-performance comparison.
+
+The Day 5 test set is also different from the 36-State/UT dataset used for Days 3 and 4, so the metrics are not directly comparable as a controlled performance experiment.
+
+### Finer-Granularity Indian Data Sources
+
+The current MoRTH dataset is State/UT-level. The Government of India's Open Government Data platform provides additional road-accident datasets, including State/UT-level data and datasets for Million Plus cities. These datasets can be investigated as potential sources for finer-granularity features.
+
+Future work can also investigate accident-location data from systems such as IRAD/e-DAR and relevant state or city traffic authorities, subject to data availability and access.
