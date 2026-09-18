@@ -79,3 +79,38 @@ The OpenWeatherMap API key is supplied through an environment variable and is no
 - Small modeling sample size
 - Weather and time-of-day are not yet joined to the accident dataset
 - Baseline is intended only as an initial prototype
+
+## Day 4 — Leakage Review and Leakage-Reduced Model
+
+### Target Leakage Review
+
+The Day 3 baseline used features including 2014 pothole-related killed/injured counts and 2016 pothole-related accident, killed, and injured counts.
+
+The 2014 pothole killed/injured features are closely related to the 2014 pothole-accident target and were therefore excluded from the revised model.
+
+The 2016 pothole-related fields were also excluded from the revised model because they represent a later year than the 2014 target.
+
+### Leakage-Reduced Features
+
+The revised Logistic Regression model used:
+
+- `speed_breakers_number_of_accidents_2016`
+- `sharp_curve_number_of_accidents_2016`
+- `steep_gradient_number_of_accidents_2016`
+
+### Results Comparison
+
+| Model | Accuracy | F1 Score |
+|---|---:|---:|
+| Day 3 original baseline | 77.78% | 0.7500 |
+| Day 4 leakage-reduced model | 66.67% | 0.5714 |
+
+Both models used the same 36 State/UT observations, with a 27/9 train-test split, `random_state=42`, and stratification.
+
+### Interpretation
+
+The leakage-reduced model produced lower Accuracy and F1 than the original baseline. This indicates that the original performance was partly supported by features closely related to the target.
+
+This revised model reduces direct target overlap, but it is not a fully forecast-safe temporal model because the remaining MoRTH features are from 2016 while the target is based on 2014 data.
+
+The results remain preliminary because the dataset contains only 36 State/UT observations.
