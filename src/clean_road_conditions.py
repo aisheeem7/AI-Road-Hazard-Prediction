@@ -16,11 +16,13 @@ df.columns = (
     df.columns
     .str.strip()
     .str.lower()
+    .str.replace(".", "", regex=False)
     .str.replace("/", "_", regex=False)
     .str.replace("-", "_", regex=False)
     .str.replace("(", "", regex=False)
     .str.replace(")", "", regex=False)
     .str.replace(" ", "_", regex=False)
+    .str.replace(r"_+", "_", regex=True)
 )
 
 # Convert S. No. to nullable integer
